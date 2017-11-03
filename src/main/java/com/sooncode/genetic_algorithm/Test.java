@@ -18,6 +18,10 @@ public class Test
     public static void main( String[] args )
     {
     	List<Chromosome> list = GenePool.getChromosomes(20, new int[] {10});
+    	for (Chromosome chromosome : list) {
+    		System.out.println(chromosome.getDNACode());
+			
+		}
     	NaturalEvolution ne = new NaturalEvolution(80, 5, 0.4, 0.6);
     	List<Chromosome> list2 =  ne.naturalSelect(list, new Evolution() {
 			
@@ -25,11 +29,12 @@ public class Test
 			public int naturalSelect(Chromosome chromosome) {
 				String code = chromosome.getDNACode();
 				int r = 0;
-				if(code.indexOf("10101")==0) {
+				if(code.indexOf("11111")==0) {
 					 r = RandomBuilder.random(90, 100);
 				}else {
 					r = 61;
 				}
+				System.out.println(code + " : " + r);
 				return r;
 			}
 		});
